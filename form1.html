@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Formulas</title>
+</head>
+<body>
+    <h1>Advanced Formulas</h1>
+    <button onclick="calculateRandomFormula()">Calculate</button>
+    <p id="formula"></p>
+    <p id="result"></p>
+
+    <script>
+        const formulas = [
+            'Math.sin(Math.PI / 4)',         // синус 45 градусов
+            'Math.log(Math.E ** 3)',         // логарифм от e^3
+            'Math.pow(2, 5)',                // 2 в 5-ой степени
+            'Math.sqrt(81)',                // квадратный корень из 81
+            'Math.round(Math.random() * 100)', // случайное число от 0 до 100, округленное
+            '(10 + Math.random() * 10) * 5' // случайное число от 50 до 100
+        ];
+
+        function calculateRandomFormula() {
+            const randomIndex = Math.floor(Math.random() * formulas.length);
+            const randomFormula = formulas[randomIndex];
+
+            const formulaElement = document.getElementById('formula');
+            const resultElement = document.getElementById('result');
+
+            try {
+                const result = eval(randomFormula);
+                formulaElement.textContent = `Formula: ${randomFormula}`;
+                resultElement.textContent = `Result: ${result.toFixed(4)}`;
+            } catch (error) {
+                formulaElement.textContent = `Error in formula: ${randomFormula}`;
+                resultElement.textContent = 'Result: N/A';
+            }
+        }
+    </script>
+</body>
+</html>
